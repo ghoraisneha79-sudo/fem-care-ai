@@ -25,5 +25,5 @@ export default defineHandler(async (event) => {
   if (!metrics.length) throw createError({ statusCode: 400, statusMessage: "No numeric columns found in the uploaded CSV" });
   const summary = { metrics };
   const saved = await sql`INSERT INTO kaggle_analysis_runs (user_id, dataset_name, row_count, summary) VALUES (${event.context.userId as string}, ${body.dataset_name.trim().slice(0, 120)}, ${body.rows.length}, ${JSON.stringify(summary)}::jsonb) RETURNING id, dataset_name, row_count, summary, created_at`;
-  return saved[0];
+  return { ...saved[0], metrics };
 });
