@@ -7,3 +7,6 @@
 @media(max-width:420px){.symptom-form{grid-template-columns:1fr}.symptom-form .primary-button{grid-column:auto}}
 
 .calendar-day{color:#422b3d}.calendar-day.active:not(.period-day){color:#8f245c}.calendar-day.period-day{color:#fff}
+
+.symptom-options{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;border:0;padding:0;margin:0}.symptom-options legend{width:100%;margin-bottom:4px;color:#665365;font-size:10px}.symptom-form .symptom-option{display:inline-flex;grid-template-columns:none;align-items:center;gap:7px;padding:8px 11px;border:1px solid #e8d8e2;border-radius:999px;background:#fff;color:#665365;cursor:pointer;font-size:10px;transition:background .16s,border-color .16s,color .16s}.symptom-form .symptom-option input{width:14px;height:14px;margin:0;accent-color:#bd4290}.symptom-form .symptom-option.selected{border-color:#dca6c4;background:#fbecf4;color:#8d2c65}.symptom-form .symptom-intensity{grid-column:1/2}.symptom-form .primary-button{align-self:end}
+@media(max-width:760px){.symptom-options{grid-column:1/-1}.symptom-form .symptom-intensity{grid-column:1/-1}}
