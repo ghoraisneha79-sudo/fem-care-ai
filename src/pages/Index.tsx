@@ -4,6 +4,7 @@ import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis } f
 import { toast } from "sonner";
 import { api, type Cycle } from "@/lib/femora-api";
 import { authClient, useAuthSession } from "@/lib/auth-client";
+import "../App.css";
 import "../client.css";
 
 type NavPage = "Overview" | "Cycle insights" | "Symptom journal" | "Clinical report" | "Family tree" | "Connections";
