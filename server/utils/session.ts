@@ -30,6 +30,7 @@ export function normalizeAuthCookieHeader(cookieHeader: string, isHttp: boolean)
 }
 
 export async function getSessionFromCookie(cookieHeader: string | null, isHttp: boolean): Promise<Session> {
+  if (!authBase) throw new Error("NEON_AUTH_BASE_URL is not configured");
   if (!cookieHeader) return null;
   const cookie = normalizeAuthCookieHeader(cookieHeader, isHttp);
   if (!cookie) return null;

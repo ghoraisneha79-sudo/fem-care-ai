@@ -1,11 +1,12 @@
 import { defineHandler } from "nitro";
-import { getRequestHeaders, getRequestURL, readRawBody } from "nitro/h3";
+import { createError, getRequestHeaders, getRequestURL, readRawBody } from "nitro/h3";
 import { normalizeAuthCookieHeader } from "../../../utils/session";
 
 const authBase = process.env.NEON_AUTH_BASE_URL!;
 const allowed = new Set(["accept", "accept-language", "authorization", "content-type", "cookie", "origin", "referer", "user-agent", "x-forwarded-for"]);
 
 export default defineHandler(async (event) => {
+  if (!authBase) throw createError({ statusCode: 503, statusMessage: "Neon Auth is not configured. Set NEON_AUTH_BASE_URL in the server environment." });
   const url = getRequestURL(event);
   const path = url.pathname.startsWith("/api/auth") ? url.pathname.slice("/api/auth".length) || "/" : url.pathname;
   const headers = new Headers();
